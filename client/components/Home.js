@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
+import { apiKey } from '../../.env';
+
 // import SearchForm from './SearchForm';
 
 class Home extends Component {
@@ -25,9 +27,7 @@ class Home extends Component {
     const { search } = this.state;
     console.log('handleSubmit search: ', search);
     axios
-      .get(
-        `https://api.giphy.com/v1/gifs/search?api_key=w60ovrQO7lwrcHZrL9yjXigBdRHXV9cY&q=${search}&limit=3`,
-      )
+      .get(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${search}&limit=3`)
       .then(({ data: { data } }) => {
         console.log('results: ', data);
         console.log('gifs before: ', this.state.gifs);
