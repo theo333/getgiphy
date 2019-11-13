@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 import { apiKey } from '../../.env';
+import SearchForm from './SearchForm';
 
 // import SearchForm from './SearchForm';
 
@@ -13,6 +14,8 @@ class Search extends Component {
       currentSearch: '', // eslint-disable-line react/no-unused-state
       gifs: [],
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.getGifs = this.getGifs.bind(this);
   }
 
   componentDidMount() {
@@ -30,27 +33,50 @@ class Search extends Component {
   getGifs = () => {
     const { search } = this.state;
     console.log('handleSubmit search: ', search);
-    // TODO set up store, make a thunk and put on store state
-    axios
+    return axios
       .get(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${search}&limit=8`)
       .then(({ data: { data } }) => {
         console.log('results: ', data);
-        console.log('gifs before: ', this.state.gifs);
         return data;
       })
-      .then(() => console.log('gifs after: ', this.state.gifs))
       .catch(error => console.log(error));
   };
 
   // TODO pass as prop to SearchForm
-  handleSubmit = async query => {
+  // handleSubmit = async (query, ev) => {
+  //   try {
+  //     const gifs = await this.getGifs(query);
+  //     this.setState({ currentSearch: query, gifs }); // eslint-disable-line react/no-unused-state
+  //   } catch (error) {
+  //     console.log('handleSubmit error: ', error);
+  //   }
+  // };
+
+  handleSubmit = async ev => {
     try {
-      const gifs = await this.getGifs(query);
-      this.setState({ currentSearch: query, gifs }); // eslint-disable-line react/no-unused-state
+      ev.preventDefault();
+      const gifs = await this.getGifs();
+      console.log('gifs in handleSubmit: ', gifs);
+      this.setState(
+        prevState => ({ currentSearch: prevState.search, gifs }),
+        () => console.log('state: ', this.state),
+      ); // eslint-disable-line react/no-unused-state
     } catch (error) {
       console.log('handleSubmit error: ', error);
     }
   };
+
+  // handleSubmit = (ev) => {
+
+  //   ev.preventDefault();
+  //   const _getGifs = this.getGifs();
+  //   console.log('_getGifs: ', _getGifs);
+  //   // .then(gifs => {
+  //   //   console.log('gifs in handleSubmit: ', gifs)
+  //   //   this.setState({ gifs });
+  //   // })
+  //   // .catch(error => console.log('handleSubmit error: ', error))
+  // };
 
   render() {
     const { handleChange, handleSubmit } = this;
@@ -60,7 +86,7 @@ class Search extends Component {
         <h1>Search for Your Favorite GIFs!</h1>
 
         {/* TODO move to SearchForm component */}
-        {/* <SearchForm onSubmit={handleSubmit} /> */}
+        {/* <SearchForm handleSubmit={this.handleSubmit} /> */}
         <form id="search-form" className="form-group" onSubmit={handleSubmit}>
           <label htmlFor="search" className="">
             Search
@@ -71,7 +97,7 @@ class Search extends Component {
 
         {gifs.length ? (
           <Fragment>
-            <h2>Search results for {`%quot${search}%quot`}</h2>
+            <h2>Search results for {`"${search}"`}</h2>
             <ul id="gifs-main" className="container">
               {gifs.map(gif => {
                 const { title, images } = gif;
