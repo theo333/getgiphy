@@ -5,7 +5,7 @@ import { apiKey } from '../../.env';
 
 // import SearchForm from './SearchForm';
 
-class Home extends Component {
+class Search extends Component {
   constructor() {
     super();
     this.state = {
@@ -56,7 +56,7 @@ class Home extends Component {
           <button type="submit">Search</button>
         </form>
         {gifs.length ? (
-          <ul>
+          <ul id="gifs-main" className="container">
             {gifs.map(gif => {
               const { title, images } = gif;
               // eslint-disable-next-line camelcase
@@ -79,4 +79,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Search;

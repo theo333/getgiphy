@@ -1,19 +1,21 @@
 import React, { Fragment } from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import Home from './Home';
+import Search from './Search';
+import Nav from './Nav';
+import Favorites from './Favorites';
 
 const App = () => {
   return (
     <Fragment>
-      <header>{/* <Nav /> */}</header>
+      <header className="container">
+        <Nav />
+      </header>
       <section id="content">
-        <Router>
-          <Switch>
-            <Route path="/" component={Home} />
-            {/* <Route path='/favorites' component={Favorites} /> */}
-          </Switch>
-        </Router>
+        <Switch>
+          <Route exact path="/" component={Search} />
+          <Route exact path="/favorites" component={Favorites} />
+        </Switch>
       </section>
     </Fragment>
   );
