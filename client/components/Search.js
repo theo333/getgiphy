@@ -102,8 +102,8 @@ class Search extends Component {
             </ul>
           </Fragment>
         ) : (
-            ''
-          )}
+          ''
+        )}
       </Fragment>
     );
   }
