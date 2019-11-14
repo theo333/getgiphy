@@ -97,13 +97,18 @@ class Search extends Component {
                     {/* TODO show on bottom part of image (CSS Grid), use caption for accessibility?
                     {title} */}
                     <FavoritesContext.Consumer>
-                      {({ favorites, addFavorite, removeFavorite }) => (
+                      {({ favorites, addFavorite, removeFavorite, toggleFavorite }) => (
                         <div>
-                          {console.log('favorites, addFavorite, removeFavorite: ', favorites)}
+                          {console.log('favorites: ', favorites)}
                           <button name="fav" type="button" onClick={() => addFavorite(gif)}>
-                            Add to Favorites
+                            +
                           </button>
-                          {/* <p>Favorites: {favorites}</p> */}
+                          <button name="fav" type="button" onClick={() => removeFavorite(gif)}>
+                            -
+                          </button>
+                          <button name="fav" type="button" onClick={() => toggleFavorite(gif)}>
+                            Toggle
+                          </button>
                         </div>
                       )}
                     </FavoritesContext.Consumer>
