@@ -97,9 +97,11 @@ class Search extends Component {
                     {/* TODO show on bottom part of image (CSS Grid), use caption for accessibility?
                     {title} */}
                     <FavoritesContext.Consumer>
-                      {({ favorites, addFavorite, removeFavorite, toggleFavorite }) => (
+                      {({ favorites, addFavorite, removeFavorite, toggleFavorite, isFavorite }) => (
                         <div>
                           {console.log('favorites: ', favorites)}
+                          {/* TODO how to use isFavorite() here ??? */}
+                          {favorites.find(x => x.id === gif.id) ? 'fav' : 'NOT'}
                           <button name="fav" type="button" onClick={() => addFavorite(gif)}>
                             +
                           </button>
