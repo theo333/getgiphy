@@ -4,22 +4,21 @@ import FavoritesContext from './FavoritesContext';
 
 const FavoritesContextProvider = props => {
   const isFavorite = (state, fav) => {
-    console.log('state in isFavorite(): ', state);
-    // const allFaves = state.favorites.map(x => x.isFav);
-    // console.log('allFaves: ', allFaves)
-    // const isFave = state.favorites.find(x => x.isFav === true);
-    const isFave = state.favorites.find(x => x.id === fav.id);
-    console.log('isFave; ', !!isFave, isFave);
-    return isFave;
+    if (state.favorites) {
+      console.log('favorites in isFavorite', state.favorites);
+      return state.favorites.find(x => x.id === fav.id);
+    }
+    return false;
   };
 
   const addFavorite = fav => {
+    // TODO do I use this anywhere ???
     fav.isFav = true;
     setFavorites(prevState => {
       const newFavorites = isFavorite(prevState, fav)
         ? prevState.favorites
         : [...prevState.favorites, fav];
-
+      setToStorage('fav', newFavorites);
       return {
         ...prevState,
         favorites: newFavorites,
@@ -37,31 +36,38 @@ const FavoritesContextProvider = props => {
     });
   };
 
-  // const toggleFavorite = fav => !isFavorite(favorites, fav);
-
-  // TODO not working - isFavorite is not working ???
   const toggleFavorite = fav => {
-    console.log('isFavorite: ', isFavorite(favorites, fav), favorites);
-    // const _isFavorite = isFavorite(favorites, fav)
-    //   ? 'remove now' //removeFavorite(fav)
-    //   : addFavorite(fav);
-    // console.log('_isFavorite: ', _isFavorite)
-    // return _isFavorite;
-    return isFavorite(favorites, fav)
-      ? 'remove now' //removeFavorite(fav)
-      : addFavorite(fav);
+    if (isFavorite(favorites, fav)) {
+      console.log('removed: ', fav.id);
+      removeFavorite(fav);
+    } else {
+      console.log('added: ', fav.id);
+      addFavorite(fav);
+    }
   };
 
+  const setToStorage = (key, data) => {
+    localStorage.setItem(key, JSON.stringify(data));
+  };
+
+  const getFromStorage = key => JSON.parse(localStorage.getItem(key));
+
+  //**** TODO refactor so that are using state instead of favorites, this way can add state.currentSearch
   const initialState = {
-    favorites: [],
-    addFavorite,
-    removeFavorite,
-    toggleFavorite,
+    favorites: getFromStorage('fav') || [],
   };
 
   const [favorites, setFavorites] = useState(initialState);
 
-  return <FavoritesContext.Provider value={favorites}>{props.children}</FavoritesContext.Provider>;
+  const value = {
+    favorites: favorites.favorites,
+    addFavorite,
+    removeFavorite,
+    toggleFavorite,
+    isFavorite,
+  };
+
+  return <FavoritesContext.Provider value={value}>{props.children}</FavoritesContext.Provider>;
 };
 
 export default FavoritesContextProvider;
