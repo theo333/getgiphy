@@ -4,9 +4,8 @@ import FavoritesContext from './FavoritesContext';
 
 const FavoritesContextProvider = props => {
   const isFavorite = (state, fav) => {
-    if (state.favorites) {
-      console.log('favorites in isFavorite', state.favorites);
-      return state.favorites.find(x => x.id === fav.id);
+    if (state) {
+      return state.find(x => x.id === fav.id);
     }
     return false;
   };
@@ -14,25 +13,19 @@ const FavoritesContextProvider = props => {
   const addFavorite = fav => {
     // TODO do I use this anywhere ???
     fav.isFav = true;
+
     setFavorites(prevState => {
-      const newFavorites = isFavorite(prevState, fav)
-        ? prevState.favorites
-        : [...prevState.favorites, fav];
+      const newFavorites = isFavorite(prevState, fav) ? prevState : [...prevState, fav];
       setToStorage('fav', newFavorites);
-      return {
-        ...prevState,
-        favorites: newFavorites,
-      };
+      return newFavorites;
     });
   };
 
   const removeFavorite = fav => {
     setFavorites(prevState => {
-      const newState = {
-        ...prevState,
-        favorites: prevState.favorites.filter(x => x.id !== fav.id),
-      };
-      return newState;
+      const newFavorites = prevState.filter(x => x.id !== fav.id);
+      setToStorage('fav', newFavorites);
+      return newFavorites;
     });
   };
 
@@ -52,15 +45,13 @@ const FavoritesContextProvider = props => {
 
   const getFromStorage = key => JSON.parse(localStorage.getItem(key));
 
-  //**** TODO refactor so that are using state instead of favorites, this way can add state.currentSearch
-  const initialState = {
-    favorites: getFromStorage('fav') || [],
-  };
+  //**** TODO ? refactor so that are using state instead of favorites, this way can add state.currentSearch
+  const initialState = getFromStorage('fav') || [];
 
   const [favorites, setFavorites] = useState(initialState);
 
   const value = {
-    favorites: favorites.favorites,
+    favorites,
     addFavorite,
     removeFavorite,
     toggleFavorite,
