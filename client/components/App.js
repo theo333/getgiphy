@@ -11,7 +11,7 @@ const App = () => {
       <header className="container">
         <Nav />
       </header>
-      <section id="content">
+      <section id="content" className="container">
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/favorites" component={Favorites} />

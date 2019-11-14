@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Nav = () => {
   return (
     <nav id="navigation">
+      {/* TODO convert ul => div */}
       <ul>
         <li>
           <NavLink

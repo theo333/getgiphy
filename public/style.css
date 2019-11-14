@@ -1,7 +1,28 @@
+#root {
+  /* max-width: 960px; */
+}
+
 #gifs-main {
 }
 
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+header {
+  background-color: bisque;
+  justify-content: center;
+}
+
+#content {
+  flex-direction: column;
+  text-align: center;
+}
+
+#gifs-main,
+nav ul {
+  list-style-type: none;
 }

@@ -2,8 +2,6 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 import { apiKey } from '../../.env';
-import SearchForm from './SearchForm';
-
 // import SearchForm from './SearchForm';
 
 class Search extends Component {
@@ -66,18 +64,6 @@ class Search extends Component {
     }
   };
 
-  // handleSubmit = (ev) => {
-
-  //   ev.preventDefault();
-  //   const _getGifs = this.getGifs();
-  //   console.log('_getGifs: ', _getGifs);
-  //   // .then(gifs => {
-  //   //   console.log('gifs in handleSubmit: ', gifs)
-  //   //   this.setState({ gifs });
-  //   // })
-  //   // .catch(error => console.log('handleSubmit error: ', error))
-  // };
-
   render() {
     const { handleChange, handleSubmit } = this;
     const { search, gifs } = this.state;
@@ -116,8 +102,8 @@ class Search extends Component {
             </ul>
           </Fragment>
         ) : (
-          ''
-        )}
+            ''
+          )}
       </Fragment>
     );
   }
