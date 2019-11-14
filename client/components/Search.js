@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 import { apiKey } from '../../.env';
+import FavoritesContext from '../contexts/FavoritesContext';
 // import SearchForm from './SearchForm';
 
 class Search extends Component {
@@ -93,8 +94,19 @@ class Search extends Component {
                 const { url, height, width } = fixed_height;
                 return (
                   <li key={gif.id}>
-                    {/* TODO show on bottom part of image, use caption for accessibility?
+                    {/* TODO show on bottom part of image (CSS Grid), use caption for accessibility?
                     {title} */}
+                    <FavoritesContext.Consumer>
+                      {({ favorites, addFavorite, removeFavorite }) => (
+                        <div>
+                          {console.log('favorites, addFavorite, removeFavorite: ', favorites)}
+                          <button name="fav" type="button" onClick={() => addFavorite(gif)}>
+                            Add to Favorites
+                          </button>
+                          {/* <p>Favorites: {favorites}</p> */}
+                        </div>
+                      )}
+                    </FavoritesContext.Consumer>
                     <img src={url} alt={title} height={height} width={width} />
                   </li>
                 );
