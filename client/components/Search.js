@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import MdHeart from 'react-ionicons/lib/MdHeart';
 
 import { apiKey } from '../../.env';
 import FavoritesContext from '../contexts/FavoritesContext';
@@ -101,15 +102,22 @@ class Search extends Component {
                         <div>
                           {console.log('favorites: ', favorites)}
                           {/* TODO how to use isFavorite() here ??? */}
-                          {favorites.find(x => x.id === gif.id) ? 'fav' : 'NOT'}
-                          <button name="fav" type="button" onClick={() => addFavorite(gif)}>
+                          {/* {favorites.find(x => x.id === gif.id) ? 'fav' : 'NOT'} */}
+                          {/* <button name="fav" type="button" onClick={() => addFavorite(gif)}>
                             +
                           </button>
                           <button name="fav" type="button" onClick={() => removeFavorite(gif)}>
                             -
-                          </button>
-                          <button name="fav" type="button" onClick={() => toggleFavorite(gif)}>
-                            Toggle
+                          </button> */}
+                          <button
+                            name="favorite-toggle"
+                            type="button"
+                            onClick={() => toggleFavorite(gif)}
+                          >
+                            <MdHeart
+                              fontSize="25px"
+                              color={favorites.find(x => x.id === gif.id) ? 'red' : 'black'}
+                            />
                           </button>
                         </div>
                       )}
