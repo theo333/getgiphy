@@ -1,3 +1,7 @@
+.main-content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
 #root {
   /* max-width: 960px; */
 }
@@ -13,8 +17,22 @@
 }
 
 header {
+  padding: 0 3em 0.5em;
   background-color: bisque;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+}
+
+.navigation ul {
+  display: flex;
+  margin-left: 30px;
+}
+
+.navigation li {
+  flex-grow: 3;
+  flex-shrink: 1;
+  flex-basis: 0%;
 }
 
 #content {

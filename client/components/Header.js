@@ -4,6 +4,8 @@ import Nav from './Nav';
 const Header = () => {
   return (
     <header className="container">
+      <img alt="Get Giphy logo" src="images/logo.png" height="80" />
+      <span>GetGiphy</span>
       <Nav />
     </header>
   );
