@@ -1,3 +1,4 @@
+/*eslint-disable consistent-return*/
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import MdHeart from 'react-ionicons/lib/MdHeart';
@@ -15,24 +16,24 @@ class Search extends Component {
     };
   }
 
-  // TODO convert to async-await
-  getGifs = search => {
-    console.log('handleSubmit search: ', search);
-    return axios
-      .get(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${search}&limit=8`)
-      .then(({ data: { data } }) => {
-        console.log('results: ', data);
-        return data;
-      })
-      .catch(error => console.log(error));
+  getGifs = async search => {
+    try {
+      const response = await axios.get(
+        `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${search}&limit=8`,
+      );
+      const results = response.data.data;
+      return results;
+    } catch (error) {
+      console.log('getGifs error: ', error);
+    }
   };
 
   handleSubmit = async query => {
     try {
       const gifs = await this.getGifs(query);
-      this.setState({ currentSearch: query, gifs }); // eslint-disable-line react/no-unused-state
+      this.setState({ gifs });
     } catch (error) {
-      console.log('handleSubmit error: ', error);
+      console.log('Search handleSubmit error: ', error);
     }
   };
 
@@ -41,9 +42,7 @@ class Search extends Component {
     return (
       <Fragment>
         <h1>Search for Your Favorite GIFs!</h1>
-
         <SearchForm onSubmit={this.handleSubmit} />
-
         {gifs.length ? (
           <Fragment>
             <ul id="gifs-main" className="container">
