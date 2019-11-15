@@ -24,7 +24,7 @@ const Nav = () => {
               >
                 Favorites
               </NavLink>
-              {count}
+              <span className="count">{count}</span>
             </li>
           </ul>
         )}
