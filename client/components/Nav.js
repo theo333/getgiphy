@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import FavoritesContext from '../contexts/FavoritesContext';
 
@@ -7,27 +7,29 @@ const Nav = () => {
     <nav className="navigation">
       <FavoritesContext.Consumer>
         {({ count }) => (
-          <Fragment>
-            <ul>
-              <li>
-                <NavLink
-                  to="/"
-                  // aria-
-                >
-                  Search
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/favorites"
-                  // aria-
-                >
-                  Favorites
-                </NavLink>
-                <span className="count">{count}</span>
-              </li>
-            </ul>
-          </Fragment>
+          <ul>
+            <li>
+              <NavLink
+                exact
+                to="/"
+                // aria-
+                role="button"
+              >
+                Search
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                exact
+                to="/favorites"
+                // aria-
+                role="button"
+              >
+                Favorites
+              </NavLink>
+              <span className="count">{count}</span>
+            </li>
+          </ul>
         )}
       </FavoritesContext.Consumer>
     </nav>
