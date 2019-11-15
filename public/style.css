@@ -27,12 +27,20 @@ header {
 .navigation ul {
   display: flex;
   margin-left: 30px;
+  list-style-type: none;
 }
 
 .navigation li {
-  flex-grow: 3;
-  flex-shrink: 1;
-  flex-basis: 0%;
+  flex: 3;
+  margin-left: 30px;
+}
+
+.navigation .count {
+  margin-left: 10px;
+}
+
+.navigation .company-name {
+  margin-left: 40px;
 }
 
 #content {
@@ -43,4 +51,16 @@ header {
 #gifs-main,
 nav ul {
   list-style-type: none;
+}
+
+.card {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.btn-heart {
+  position: relative;
+  top: 0;
+  right: 0;
 }

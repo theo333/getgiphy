@@ -97,40 +97,37 @@ class Search extends Component {
                   <li key={gif.id}>
                     {/* TODO show on bottom part of image (CSS Grid), use caption for accessibility?
                     {title} */}
-                    <FavoritesContext.Consumer>
-                      {({ favorites, addFavorite, removeFavorite, toggleFavorite, isFavorite }) => (
-                        <div>
-                          {console.log('favorites: ', favorites)}
-                          {/* TODO how to use isFavorite() here ??? */}
-                          {/* {favorites.find(x => x.id === gif.id) ? 'fav' : 'NOT'} */}
-                          {/* <button name="fav" type="button" onClick={() => addFavorite(gif)}>
-                            +
-                          </button>
-                          <button name="fav" type="button" onClick={() => removeFavorite(gif)}>
-                            -
-                          </button> */}
-                          <button
-                            name="favorite-toggle"
-                            type="button"
-                            onClick={() => toggleFavorite(gif)}
-                          >
-                            <MdHeart
-                              fontSize="25px"
-                              color={favorites.find(x => x.id === gif.id) ? 'red' : 'black'}
-                            />
-                          </button>
-                        </div>
-                      )}
-                    </FavoritesContext.Consumer>
-                    <img src={url} alt={title} height={height} width={width} />
+                    <div className='card'>
+                      <FavoritesContext.Consumer>
+                        {({ favorites, addFavorite, removeFavorite, toggleFavorite, isFavorite }) => (
+                          <Fragment>
+                            {console.log('favorites: ', favorites)}
+                            {/* TODO how to use isFavorite() here ??? */}
+                            {/* {favorites.find(x => x.id === gif.id) ? 'fav' : 'NOT'} */}
+                            <button
+                              name='favorite-toggle'
+                              type='button'
+                              className='btn-heart'
+                              onClick={() => toggleFavorite(gif)}
+                            >
+                              <MdHeart
+                                fontSize="25px"
+                                color={favorites.find(x => x.id === gif.id) ? 'red' : 'black'}
+                              />
+                            </button>
+                          </Fragment>
+                        )}
+                      </FavoritesContext.Consumer>
+                      <img src={url} alt={title} height={height} width={width} />
+                    </div>
                   </li>
                 );
               })}
             </ul>
           </Fragment>
         ) : (
-          ''
-        )}
+            ''
+          )}
       </Fragment>
     );
   }

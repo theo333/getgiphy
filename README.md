@@ -1,32 +1,40 @@
-## \_project_name
+## GetGiphy
 
-### View live on Heroku
+### Description
 
-heroku_url
+GetGiphy is an app which allows one to retreive animated GIFs from the Giphy API and save them to their local Favorites.
 
-### Project Details
+### Functionality
 
-- assigned
-- due
-- (?) No beginning repo
-- Replicate this: profs_heroku_url
-- Description:
+This application enables the user to:
 
-### Challenges
+- Query Giphy API to retreive animated GIFs.
+- Add / Remove GIFs from Favorites
 
--
+### Install
 
-### Technologies and Concepts Used
+```
+npm i
+```
 
-- Node.js
-- Express
-- Sequelize
-- React
-- React Router
-- Axios
-- Deploy to Heroku
+### Run Program
 
-### react-minimal template
+```
+npm run start:dev
+```
 
-- npm install
-- npm run start:dev
+### Technologies Used
+
+- [React](https://reactjs.org/)
+- [React Router](https://reacttraining.com/react-router/)
+- [React Context](https://reactjs.org/docs/context.html) - state management
+- [Axios](https://www.npmjs.com/package/axios) - fetching API data
+- [React Ion Icons](https://zamarrowski.github.io/react-ionicons/)
+- Eslint
+- Prettier
+- local storage - to persist Favorites on hard refresh
+
+### Developer Notes
+
+- Accessibility Features (?)
+- SEO
