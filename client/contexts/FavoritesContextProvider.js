@@ -35,8 +35,9 @@ const FavoritesContextProvider = props => {
   const value = {
     favorites,
     count,
-    toggleFavorite,
     isFavorite,
+    removeFavorite,
+    toggleFavorite,
   };
 
   return <FavoritesContext.Provider value={value}>{props.children}</FavoritesContext.Provider>;
