@@ -97,17 +97,23 @@ class Search extends Component {
                   <li key={gif.id}>
                     {/* TODO show on bottom part of image (CSS Grid), use caption for accessibility?
                     {title} */}
-                    <div className='card'>
+                    <div className="card">
                       <FavoritesContext.Consumer>
-                        {({ favorites, addFavorite, removeFavorite, toggleFavorite, isFavorite }) => (
+                        {({
+                          favorites,
+                          addFavorite,
+                          removeFavorite,
+                          toggleFavorite,
+                          isFavorite,
+                        }) => (
                           <Fragment>
                             {console.log('favorites: ', favorites)}
                             {/* TODO how to use isFavorite() here ??? */}
                             {/* {favorites.find(x => x.id === gif.id) ? 'fav' : 'NOT'} */}
                             <button
-                              name='favorite-toggle'
-                              type='button'
-                              className='btn-heart'
+                              name="favorite-toggle"
+                              type="button"
+                              className="btn-heart"
                               onClick={() => toggleFavorite(gif)}
                             >
                               <MdHeart
@@ -126,8 +132,8 @@ class Search extends Component {
             </ul>
           </Fragment>
         ) : (
-            ''
-          )}
+          ''
+        )}
       </Fragment>
     );
   }

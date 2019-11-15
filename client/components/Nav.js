@@ -12,7 +12,7 @@ const Nav = () => {
               <li>
                 <NavLink
                   to="/"
-                // aria-
+                  // aria-
                 >
                   Search
                 </NavLink>
@@ -20,7 +20,7 @@ const Nav = () => {
               <li>
                 <NavLink
                   to="/favorites"
-                // aria-
+                  // aria-
                 >
                   Favorites
                 </NavLink>
