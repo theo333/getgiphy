@@ -1,28 +1,34 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import FavoritesContext from '../contexts/FavoritesContext';
 
 const Nav = () => {
   return (
     <nav id="navigation">
       {/* TODO convert ul => div */}
-      <ul>
-        <li>
-          <NavLink
-            to="/"
-            // aria-
-          >
-            Search
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/favorites"
-            // aria-
-          >
-            Favorites
-          </NavLink>
-        </li>
-      </ul>
+      <FavoritesContext.Consumer>
+        {({ count }) => (
+          <ul>
+            <li>
+              <NavLink
+                to="/"
+                // aria-
+              >
+                Search
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/favorites"
+                // aria-
+              >
+                Favorites
+              </NavLink>
+              {count}
+            </li>
+          </ul>
+        )}
+      </FavoritesContext.Consumer>
     </nav>
   );
 };
