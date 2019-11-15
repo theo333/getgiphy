@@ -31,14 +31,10 @@ const Search = () => {
     }
   };
 
-  const clearSearch = () => {
-    setGifs([]);
-  };
-
   return (
     <Fragment>
       <h1>Search for Your Favorite GIFs!</h1>
-      <SearchForm onSubmit={handleSubmit} onClear={clearSearch} />
+      <SearchForm onSubmit={handleSubmit} />
       {gifs.length ? (
         <Fragment>
           <ul id="gifs-main" className="container">

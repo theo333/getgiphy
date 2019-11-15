@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
 
-const SearchForm = ({ onSubmit, onClear }) => {
+const SearchForm = ({ onSubmit }) => {
   const [search, setSearch] = useState('');
   const [currentSearch, setCurrentSearch] = useState('');
 
@@ -10,11 +10,6 @@ const SearchForm = ({ onSubmit, onClear }) => {
     setSearch('');
     setCurrentSearch(search);
     console.log(search);
-  };
-
-  const clearSearch = () => {
-    setCurrentSearch('');
-    onClear();
   };
 
   return (
@@ -31,9 +26,6 @@ const SearchForm = ({ onSubmit, onClear }) => {
           onChange={e => setSearch(e.target.value)}
         />
         <button type="submit">Search</button>
-        <button type="button" onClick={() => clearSearch()}>
-          Clear
-        </button>
       </form>
       {currentSearch ? <h2>Search results for {`"${currentSearch}"`}</h2> : ''}
     </Fragment>
