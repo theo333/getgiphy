@@ -43,7 +43,9 @@ const Search = () => {
               const {
                 title,
                 images: {
-                  fixed_height: { url, height, width },
+                  // fixed_height: { url, height, width },
+                  // fixed_width_downsampled: { url, height, width },
+                  fixed_height_still: { url, height, width },
                 },
               } = gif;
               return (
@@ -53,7 +55,7 @@ const Search = () => {
                   <div className="card">
                     <FavoritesContext.Consumer>
                       {({ favorites, toggleFavorite, isFavorite }) => (
-                        <Fragment>
+                        <figure>
                           {console.log('favorites: ', favorites)}
                           <button
                             name="favorite-toggle"
@@ -63,7 +65,8 @@ const Search = () => {
                           >
                             <MdHeart fontSize="25px" color={isFavorite(gif) ? 'red' : 'black'} />
                           </button>
-                        </Fragment>
+                          <figcaption>{gif.title}</figcaption>
+                        </figure>
                       )}
                     </FavoritesContext.Consumer>
                     <img src={url} alt={title} height={height} width={width} />

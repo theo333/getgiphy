@@ -6,8 +6,8 @@ const Favorites = () => {
     <Fragment>
       <h1>My Giphy Favorites</h1>
       <FavoritesContext.Consumer>
-        {({ favorites, removeFavorite, toggleFavorite }) =>
-          favorites.length ? (
+        {({ favorites, removeFavorite, count }) =>
+          count ? (
             <ul id="gifs-main" className="container">
               {console.log('favorites page: ', favorites)}
               {favorites.map(gif => {
@@ -23,9 +23,6 @@ const Favorites = () => {
                     <div>
                       <button name="fav" type="button" onClick={() => removeFavorite(gif)}>
                         -
-                      </button>
-                      <button name="fav" type="button" onClick={() => toggleFavorite(gif)}>
-                        Toggle
                       </button>
                     </div>
                     <img src={url} alt={title} height={height} width={width} />

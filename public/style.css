@@ -43,6 +43,10 @@ header {
   margin-left: 40px;
 }
 
+.navigation a.active {
+  color: red;
+}
+
 #content {
   flex-direction: column;
   text-align: center;
