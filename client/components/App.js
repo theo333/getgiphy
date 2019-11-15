@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Search from './Search';
 import Header from './Header';
+import Footer from './Footer';
 import Favorites from './Favorites';
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Route exact path="/favorites" component={Favorites} />
         </Switch>
       </section>
+      <Footer />
     </Fragment>
   );
 };
