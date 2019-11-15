@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';
 
 import App from './components/App';
+import FavoritesContextProvider from './contexts/FavoritesContextProvider';
 
 const root = document.querySelector('#root');
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <FavoritesContextProvider>
+    <Router>
+      <App />
+    </Router>
+  </FavoritesContextProvider>,
   root,
 );
