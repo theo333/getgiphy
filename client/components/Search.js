@@ -6,6 +6,7 @@ import MdHeart from 'react-ionicons/lib/MdHeart';
 import { apiKey } from '../../.env';
 import FavoritesContext from '../contexts/FavoritesContext';
 import SearchForm from './SearchForm';
+import FavoriteButton from './FavoriteButton';
 
 const Search = () => {
   const [gifs, setGifs] = useState([]);
@@ -13,7 +14,7 @@ const Search = () => {
   const getGifs = async search => {
     try {
       const response = await axios.get(
-        `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${search}&limit=8`,
+        `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${search}&limit=13`,
       );
       const results = response.data.data;
       return results;
@@ -55,18 +56,23 @@ const Search = () => {
                   <div className="card">
                     <FavoritesContext.Consumer>
                       {({ favorites, toggleFavorite, isFavorite }) => (
-                        <figure>
+                        <Fragment>
                           {console.log('favorites: ', favorites)}
-                          <button
+                          <FavoriteButton
+                            toggleFavorite={toggleFavorite}
+                            isFavorite={isFavorite}
+                            gif={gif}
+                          />
+                          {/* <button
                             name="favorite-toggle"
                             type="button"
                             className="btn-heart"
                             onClick={() => toggleFavorite(gif)}
                           >
                             <MdHeart fontSize="25px" color={isFavorite(gif) ? 'red' : 'black'} />
-                          </button>
-                          <figcaption>{gif.title}</figcaption>
-                        </figure>
+                          </button> */}
+                          {gif.title}
+                        </Fragment>
                       )}
                     </FavoritesContext.Consumer>
                     <img src={url} alt={title} height={height} width={width} />
