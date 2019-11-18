@@ -41,8 +41,3 @@ Open site in browser.
 - [Prettier](https://prettier.io/) - code formatting
 - [BEM](http://getbem.com/introduction/) - CSS naming methodoloy
 - **Local storage** - to persist Favorites on hard refresh. Database seemed to be overkill for this use case.
-
-### Developer Notes
-
-- Accessibility Features (?)
-- SEO
