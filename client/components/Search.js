@@ -1,7 +1,8 @@
 /*eslint-disable consistent-return*/
+/*eslint-disable camelcase*/
 import React, { useState, Fragment } from 'react';
 import axios from 'axios';
-import MdHeart from 'react-ionicons/lib/MdHeart';
+import { Helmet } from 'react-helmet';
 
 import { apiKey } from '../../.env';
 import FavoritesContext from '../contexts/FavoritesContext';
@@ -34,54 +35,43 @@ const Search = () => {
 
   return (
     <Fragment>
-      <h1>Search for Your Favorite GIFs!</h1>
-      <SearchForm onSubmit={handleSubmit} />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Search for Your Favorite GIFs from Giphy | GetGiphy</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <div className="Content__header center text-center">
+        <h1>Search for Your Favorite GIFs!</h1>
+        <SearchForm onSubmit={handleSubmit} />
+      </div>
       {gifs.length ? (
-        <Fragment>
-          <ul id="gifs-main" className="container">
-            {gifs.map(gif => {
-              // eslint-disable-next-line camelcase
-              const {
-                title,
-                images: {
-                  // fixed_height: { url, height, width },
-                  // fixed_width_downsampled: { url, height, width },
-                  fixed_height_still: { url, height, width },
-                },
-              } = gif;
-              return (
-                <li key={gif.id}>
-                  {/* TODO show on bottom part of image (CSS Grid), use caption for accessibility?
-                    {title} */}
-                  <div className="card">
-                    <FavoritesContext.Consumer>
-                      {({ favorites, toggleFavorite, isFavorite }) => (
-                        <Fragment>
-                          {console.log('favorites: ', favorites)}
-                          <FavoriteButton
-                            toggleFavorite={toggleFavorite}
-                            isFavorite={isFavorite}
-                            gif={gif}
-                          />
-                          {/* <button
-                            name="favorite-toggle"
-                            type="button"
-                            className="btn-heart"
-                            onClick={() => toggleFavorite(gif)}
-                          >
-                            <MdHeart fontSize="25px" color={isFavorite(gif) ? 'red' : 'black'} />
-                          </button> */}
-                          {gif.title}
-                        </Fragment>
-                      )}
-                    </FavoritesContext.Consumer>
-                    <img src={url} alt={title} height={height} width={width} />
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </Fragment>
+        <section className="Cards">
+          <FavoritesContext.Consumer>
+            {({ toggleFavorite, isFavorite }) => (
+              <Fragment>
+                {gifs.map(gif => {
+                  const {
+                    title,
+                    images: {
+                      fixed_height_still: { url },
+                    },
+                  } = gif;
+                  return (
+                    <div className="Cards__card" key={gif.id}>
+                      <img src={url} alt={title} className="card__img" />
+                      <FavoriteButton
+                        toggleFavorite={toggleFavorite}
+                        isFavorite={isFavorite}
+                        gif={gif}
+                        buttonTitle="Add or Remove photo from favorites"
+                      />
+                    </div>
+                  );
+                })}
+              </Fragment>
+            )}
+          </FavoritesContext.Consumer>
+        </section>
       ) : (
         ''
       )}

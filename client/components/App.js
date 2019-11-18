@@ -10,12 +10,12 @@ const App = () => {
   return (
     <Fragment>
       <Header />
-      <section id="content" className="container">
+      <main className="Content center">
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/favorites" component={Favorites} />
         </Switch>
-      </section>
+      </main>
       <Footer />
     </Fragment>
   );

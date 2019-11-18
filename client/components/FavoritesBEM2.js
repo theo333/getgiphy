@@ -8,7 +8,7 @@ const FavoritesBEM2 = () => {
   return (
     <Fragment>
       <h1>My Giphy Favorites</h1>
-      <section className="masonry center">
+      <section className="Cards masonry center">
         <FavoritesContext.Consumer>
           {({ favorites, toggleFavorite, isFavorite, count }) =>
             count ? (
@@ -30,7 +30,7 @@ const FavoritesBEM2 = () => {
                     /* TODO show on bottom part of image (CSS Grid)?
                       {title} */
 
-                    <div className="masonry-brick" key={gif.id}>
+                    <div className="Cards__card masonry-brick" key={gif.id}>
                       {/* TODO serve smaller (still?) images for smaller screen sizes */}
                       {/* <div className="card__content"> */}
                       {/* <img
@@ -53,7 +53,7 @@ const FavoritesBEM2 = () => {
                         // sizes={`(max-width: 415px) 200px`}
                         title="Add photo to favorites"
                         alt={title}
-                        className="masonry-img"
+                        className="card__img masonry-img"
                         // height={height}
                         // width={width}
                       />

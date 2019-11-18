@@ -20,8 +20,12 @@ npm i
 ### Run Program
 
 ```
-npm run start:dev
+npm run start
 ```
+
+Open site in browser.
+
+`http://localhost:3000/#/`
 
 ### Technologies Used
 
@@ -32,9 +36,11 @@ npm run start:dev
 - [React Ion Icons](https://zamarrowski.github.io/react-ionicons/)
 - Eslint
 - Prettier
-- local storage - to persist Favorites on hard refresh
+- Local storage - to persist Favorites on hard refresh. Database seemed to be overkill for this use case.
 
 ### Developer Notes
 
+- Styling
+  - BEM
 - Accessibility Features (?)
 - SEO

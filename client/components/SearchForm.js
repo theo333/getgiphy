@@ -14,18 +14,17 @@ const SearchForm = ({ onSubmit }) => {
 
   return (
     <Fragment>
-      <form onSubmit={handleSubmit} className="form-group">
-        <label htmlFor="search" className="">
-          Search
-        </label>
+      <form onSubmit={handleSubmit} className="Formgroup">
         <input
-          id="search"
+          className="Formgroup__input"
           type="text"
           name="search"
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
-        <button type="submit">Search</button>
+        <button className="Formgroup__btn" type="submit">
+          Search
+        </button>
       </form>
       {currentSearch ? <h2>Search results for {`"${currentSearch}"`}</h2> : ''}
     </Fragment>

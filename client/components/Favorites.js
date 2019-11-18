@@ -1,40 +1,54 @@
+/*eslint-disable camelcase*/
+/*eslint-disable indent*/
 import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 import FavoritesContext from '../contexts/FavoritesContext';
+import FavoriteButton from './FavoriteButton';
 
 const Favorites = () => {
   return (
     <Fragment>
-      <h1>My Giphy Favorites</h1>
-      <FavoritesContext.Consumer>
-        {({ favorites, removeFavorite, count }) =>
-          count ? (
-            <ul id="gifs-main" className="container">
-              {console.log('favorites page: ', favorites)}
-              {favorites.map(gif => {
-                const { title, images } = gif;
-                // eslint-disable-next-line camelcase
-                const { fixed_height } = images;
-                // eslint-disable-next-line camelcase
-                const { url, height, width } = fixed_height;
-                return (
-                  <li key={gif.id}>
-                    {/* TODO show on bottom part of image (CSS Grid), use caption for accessibility?
-                      {title} */}
-                    <div>
-                      <button name="fav" type="button" onClick={() => removeFavorite(gif)}>
-                        -
-                      </button>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Save Your Favorite Gifs | GetGiphy</title>
+        <meta
+          name="description"
+          content="Save your favorite Gifs from GIPHY. They have the most popular and latest GIFs and Animated Stickers online."
+        />
+      </Helmet>
+      <h1 className="text-center">My Giphy Favorites</h1>
+      <section className="Cards center">
+        <FavoritesContext.Consumer>
+          {({ favorites, toggleFavorite, isFavorite, count }) =>
+            count ? (
+              <Fragment>
+                {console.log('favorites page: ', favorites)}
+                {favorites.map(gif => {
+                  const {
+                    title,
+                    images: {
+                      fixed_height_still: { url },
+                    },
+                  } = gif;
+                  return (
+                    <div className="Cards__card" key={gif.id}>
+                      <img src={url} alt={title} className="card__img" />
+                      <FavoriteButton
+                        toggleFavorite={toggleFavorite}
+                        isFavorite={isFavorite}
+                        gif={gif}
+                        buttonTitle="Remove from favorites"
+                      />
                     </div>
-                    <img src={url} alt={title} height={height} width={width} />
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            ''
-          )
-        }
-      </FavoritesContext.Consumer>
+                  );
+                })}
+              </Fragment>
+            ) : (
+              ''
+            )
+          }
+        </FavoritesContext.Consumer>
+      </section>
     </Fragment>
   );
 };

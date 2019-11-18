@@ -1,35 +1,25 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import FavoritesContext from '../contexts/FavoritesContext';
 
 const Nav = () => {
   return (
-    <nav className="navigation">
+    <nav className="Siteheader__nav">
       <FavoritesContext.Consumer>
         {({ count }) => (
-          <ul>
-            <li>
-              <NavLink
-                exact
-                to="/"
-                // aria-
-                role="button"
-              >
+          <Fragment>
+            <div className="nav__item">
+              <NavLink exact to="/" role="button">
                 Search
               </NavLink>
-            </li>
-            <li>
-              <NavLink
-                exact
-                to="/favorites"
-                // aria-
-                role="button"
-              >
+            </div>
+            <div className="nav__item">
+              <NavLink exact to="/favorites" role="button">
                 Favorites
               </NavLink>
-              <span className="count">{count}</span>
-            </li>
-          </ul>
+            </div>
+            <span className="nav__item__count">{count}</span>
+          </Fragment>
         )}
       </FavoritesContext.Consumer>
     </nav>
