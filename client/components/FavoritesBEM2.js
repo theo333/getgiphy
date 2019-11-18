@@ -7,7 +7,8 @@ import FavoriteButton from './FavoriteButton';
 const FavoritesBEM2 = () => {
   return (
     <Fragment>
-      <section className="masonry">
+      <h1>My Giphy Favorites</h1>
+      <section className="masonry center">
         <FavoritesContext.Consumer>
           {({ favorites, toggleFavorite, isFavorite, count }) =>
             count ? (
@@ -32,23 +33,37 @@ const FavoritesBEM2 = () => {
                     <div className="masonry-brick" key={gif.id}>
                       {/* TODO serve smaller (still?) images for smaller screen sizes */}
                       {/* <div className="card__content"> */}
+                      {/* <img
+                        src={fixed_width_still.url}
+                        srcSet={
+                          `${fixed_height_still.url} ${fixed_height_still.width}w`
+                        }
+                        sizes={`(max-width: 415px) 200px`}
+                        alt={title}
+                        className="masonry-img"
+                      // height={height}
+                      // width={width}
+                      /> */}
+
                       <img
                         src={fixed_height_still.url}
                         // srcSet={
-                        //   `${url} ${width}w`
+                        //   `${fixed_width_still.url} ${fixed_width_still.width}w`
                         // }
-                        // sizes={`(min-width: 415px) ${width}px`}
+                        // sizes={`(max-width: 415px) 200px`}
+                        title="Add photo to favorites"
                         alt={title}
                         className="masonry-img"
                         // height={height}
                         // width={width}
                       />
-                      {/* {gif.title}
-                        <FavoriteButton
-                          toggleFavorite={toggleFavorite}
-                          isFavorite={isFavorite}
-                          gif={gif}
-                        /> */}
+                      {/* {gif.title} */}
+                      <FavoriteButton
+                        toggleFavorite={toggleFavorite}
+                        isFavorite={isFavorite}
+                        gif={gif}
+                        buttonTitle="Remove from favorites"
+                      />
                       {/* </div> */}
                     </div>
                     // </li>
