@@ -1,3 +1,104 @@
+/**    BEM **/
+body {
+  background-color: black;
+}
+
+.Site {
+  display: flex;
+  flex-direction: column;
+}
+
+.Content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Cards__card {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  flex: 0 1 calc(25% - 1em);
+  background-color: #ececec;
+  border: 1px solid lightgray;
+  padding: 0;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.masonry {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -8px; /* Adjustment for the gutter */
+  width: 100%;
+}
+
+.masonry-brick {
+  display: flex;
+  flex: auto;
+  /* height: 250px;
+  min-width: 150px; */
+  /* margin: 0 8px 8px 0; /* Some gutter */
+  /* justify-content: center; */
+  margin-bottom: 1em;
+  margin-left: 1em;
+  overflow: hidden;
+}
+
+.masonry-img {
+  flex: auto;
+  object-fit: cover;
+  /* width: 100%; */
+  /* height: 100%; */
+  border-radius: 5px;
+}
+
+/* .masonry-brick:nth-child(4n + 1) {
+  width: 250px;
+}
+.masonry-brick:nth-child(4n + 1):nth-child(4n + 2) {
+  width: 325px;
+}
+.masonry-brick:nth-child(4n + 1):nth-child(4n + 3) {
+  width: 180px;
+}
+.masonry-brick:nth-child(4n + 1):nth-child(4n + 4) {
+  width: 380px;
+} */
+
+.card_content {
+}
+
+.card_btn {
+}
+
+.card_img {
+  display: block;
+  border: 0;
+  width: 100%;
+  /* height: auto; */
+  object-fit: contain;
+  max-height: 150px;
+}
+
+.card {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+/*****************************/
+
 .main-content-wrapper {
   display: flex;
   flex-direction: column;
@@ -13,7 +114,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 100%;
+  /* width: 100%; */
 }
 
 header {
@@ -55,12 +156,6 @@ header {
 #gifs-main,
 nav ul {
   list-style-type: none;
-}
-
-.card {
-  position: relative;
-  left: 0;
-  top: 0;
 }
 
 .btn-heart {
