@@ -22,7 +22,6 @@ const Favorites = () => {
           {({ favorites, toggleFavorite, isFavorite, count }) =>
             count ? (
               <Fragment>
-                {console.log('favorites page: ', favorites)}
                 {favorites.map(gif => {
                   const {
                     title,
@@ -32,7 +31,7 @@ const Favorites = () => {
                   } = gif;
                   return (
                     <div className="Cards__card" key={gif.id}>
-                      <img src={url} alt={title} className="card__img" />
+                      <img src={url} alt={title} title={title} className="card__img" />
                       <FavoriteButton
                         toggleFavorite={toggleFavorite}
                         isFavorite={isFavorite}

@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 3000;
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
 
-// TODO better way to do this?
 app.get('/app.js', (req, res, next) => res.sendFile(path.join(__dirname, '../public', 'main.js')));
 
 app.listen(PORT, () => {

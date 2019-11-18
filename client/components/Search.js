@@ -11,14 +11,23 @@ import FavoriteButton from './FavoriteButton';
 
 const Search = () => {
   const [gifs, setGifs] = useState([]);
+  const [error, setError] = useState('');
 
   const getGifs = async search => {
     try {
-      const response = await axios.get(
-        `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${search}&limit=13`,
-      );
-      const results = response.data.data;
-      return results;
+      // clear error before starting next search
+      if (error) setError('');
+      if (search) {
+        const response = await axios.get(
+          `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${search}&limit=30`,
+        );
+        const results = response.data.data;
+        if (!results.length) {
+          setError('Sorry no results match your search terms.  Please search again.');
+        }
+        return results;
+      }
+      setError('Sorry no results match your search terms.  Please search again.');
     } catch (error) {
       console.log('getGifs error: ', error);
     }
@@ -36,15 +45,14 @@ const Search = () => {
   return (
     <Fragment>
       <Helmet>
-        <meta charSet="utf-8" />
         <title>Search for Your Favorite GIFs from Giphy | GetGiphy</title>
-        <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div className="Content__header center text-center">
         <h1>Search for Your Favorite GIFs!</h1>
-        <SearchForm onSubmit={handleSubmit} />
+        <SearchForm onSubmit={handleSubmit} error={error} />
+        {error ? <h3 className="Content__header__alert">{error}</h3> : ''}
       </div>
-      {gifs.length ? (
+      {!error && gifs ? (
         <section className="Cards">
           <FavoritesContext.Consumer>
             {({ toggleFavorite, isFavorite }) => (
@@ -58,7 +66,7 @@ const Search = () => {
                   } = gif;
                   return (
                     <div className="Cards__card" key={gif.id}>
-                      <img src={url} alt={title} className="card__img" />
+                      <img src={url} alt={title} title={title} className="card__img" />
                       <FavoriteButton
                         toggleFavorite={toggleFavorite}
                         isFavorite={isFavorite}

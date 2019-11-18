@@ -16,6 +16,11 @@ a {
   color: #0984e3;
 }
 
+h1,
+h2 {
+  font-weight: 400;
+}
+
 /************** Header **************/
 
 .Siteheader {
@@ -49,12 +54,17 @@ a {
   margin-left: 1em;
 }
 
+/* .nav__item__search::before {
+
+} */
+
 .nav__item__count {
   margin-left: 0.5em;
   padding: 0.12em;
   background-color: white;
   color: red;
   border-radius: 5px;
+  font-size: 0.7em;
 }
 
 .Siteheader__company-name_1,
@@ -85,6 +95,10 @@ a {
   flex-direction: column;
 }
 
+.Content__header__alert {
+  color: red;
+}
+
 .Cards {
   display: flex;
   flex-flow: nowrap;
@@ -92,6 +106,7 @@ a {
   width: 100%;
   position: relative;
   flex-direction: column;
+  margin-bottom: 4em;
 }
 
 .Cards__card {
@@ -143,9 +158,26 @@ a {
   margin-left: 0.6em;
   font-size: 0.8em;
   color: black;
-  /* border-color: white; */
   background-color: orange;
   border-radius: 5px;
+}
+
+.Form-results-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Form-results-text__search {
+  color: #ffeaa7;
+  font-size: 1.5rem;
+  flex: auto;
+}
+
+.Form-results-text__instructions {
+  color: #e2e2e2;
+  font-size: 0.8em;
+  flex: auto;
 }
 
 /************** Footer **************/
@@ -205,6 +237,23 @@ a {
   .Content {
     width: 90%;
     margin-top: 6em;
+  }
+
+  .Form-results-text {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .Form-results-text__instructions {
+    margin-left: 2em;
+    margin-bottom: 1em;
+  }
+}
+
+@media (max-width: 793px) {
+  .Form-results-text {
+    margin-bottom: 1em;
   }
 }
 
