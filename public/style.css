@@ -116,6 +116,11 @@ h2 {
   margin-left: 0;
   overflow: hidden;
   position: relative;
+  transition: 0.5s all ease;
+}
+
+.Cards__card:hover {
+  transform: scale(1.06);
 }
 
 .card__img {
@@ -137,6 +142,25 @@ h2 {
   right: 0;
   background: transparent;
   border: none;
+}
+
+.card__info {
+  height: 2.8em;
+  width: 100%;
+  position: absolute;
+  bottom: -10em;
+  padding-top: 0.3em;
+  font-size: 1.2em;
+  z-index: 1;
+  text-align: center;
+  /* visibility: hidden; */
+  transition: 0.5s;
+}
+
+.Cards__card:hover .card__info {
+  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  /* visibility: visible; */
 }
 
 /************** Form **************/
