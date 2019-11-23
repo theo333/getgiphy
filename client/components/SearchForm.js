@@ -15,6 +15,9 @@ const SearchForm = ({ onSubmit, error }) => {
   return (
     <Fragment>
       <form onSubmit={handleSubmit} className="Formgroup">
+        <label htmlFor="search" className="Formgroup__label">
+          Search
+        </label>
         <input
           className="Formgroup__input"
           type="text"

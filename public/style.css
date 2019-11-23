@@ -52,6 +52,11 @@ h2 {
 
 .nav__item {
   margin-left: 1em;
+  transition: 0.5s all ease;
+}
+
+.nav__item:hover {
+  transform: scale(1.06);
 }
 
 /* .nav__item__search::before {
@@ -144,12 +149,41 @@ h2 {
   border: none;
 }
 
+.fav-heart {
+  fill: red;
+  /* stroke: black;
+  stroke-width: 40; */
+}
+
+.nofav-heart {
+  fill: black;
+  stroke: red;
+  stroke-width: 40;
+}
+
+.card__img__btn:hover {
+  /* transform: scale(1.2); */
+}
+
+svg.fav-heart:hover {
+  fill: black;
+  stroke: red;
+  stroke-width: 40;
+}
+
+svg.nofav-heart:hover {
+  fill: red;
+  /* stroke: black;
+  stroke-width: 40; */
+}
+
 .card__info {
   height: 2.8em;
   width: 100%;
   position: absolute;
   bottom: -10em;
   padding-top: 0.3em;
+  padding-bottom: 0.3em;
   font-size: 1.2em;
   z-index: 1;
   text-align: center;
@@ -168,6 +202,10 @@ h2 {
   width: 100%;
   font-size: 1.6em;
   margin-bottom: 0.2em;
+}
+
+.Formgroup__label {
+  color: black;
 }
 
 .Formgroup__input {

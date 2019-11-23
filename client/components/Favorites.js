@@ -22,7 +22,6 @@ const Favorites = () => {
           {({ favorites, toggleFavorite, isFavorite, count }) =>
             count ? (
               <Fragment>
-                {console.log(favorites)}
                 {favorites.map(gif => {
                   const {
                     title,
