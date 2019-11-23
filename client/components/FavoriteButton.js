@@ -10,7 +10,7 @@ const FavoriteButton = ({ toggleFavorite, isFavorite, gif, buttonTitle }) => {
       className="card__img__btn"
       onClick={() => toggleFavorite(gif)}
     >
-      <MdHeart fontSize="35px" className={isFavorite(gif) ? 'fav-heart' : 'nofav-heart'} />
+      <MdHeart className={isFavorite(gif) ? 'fav-heart' : 'nofav-heart'} />
     </button>
   );
 };
