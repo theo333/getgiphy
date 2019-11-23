@@ -51,7 +51,7 @@ h2 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: 1.5em;
+  font-size: 1.3em;
   width: 100%;
   margin-top: 0.6em;
 }
@@ -64,11 +64,11 @@ h2 {
 
 .Siteheader__nav li {
   flex: 3;
-  margin-left: 30px;
+  margin-left: 2em;
 }
 
 .Siteheader__nav .count {
-  margin-left: 10px;
+  margin-left: 0.7em;
 }
 
 .Siteheader__nav a.active {
@@ -172,30 +172,40 @@ h2 {
 
 .card__img__btn {
   position: absolute;
-  top: 0;
+  top: 0.2rem;
   right: 0;
   background: transparent;
   border: none;
 }
 
+.fav-heart,
+.nofav-heart {
+  width: 2rem;
+  height: 2rem;
+}
+
 .fav-heart {
   fill: red;
+  filter: brightness(80%);
 }
 
 svg.fav-heart:hover {
-  fill: white;
+  /* fill: white;
   stroke: red;
-  stroke-width: 60;
+  stroke-width: 60; */
+  filter: brightness(100%);
 }
 
 .nofav-heart {
   fill: white;
   stroke: red;
   stroke-width: 60;
+  filter: brightness(85%);
 }
 
 svg.nofav-heart:hover {
-  fill: red;
+  /* fill: red; */
+  filter: brightness(100%);
 }
 
 .card__info {
@@ -246,7 +256,9 @@ svg.nofav-heart:hover {
 }
 
 .Formgroup__btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.06);
+  background-color: #0865ae;
+  border-color: #0865ae;
 }
 
 .Form-results-text {

@@ -5,9 +5,8 @@ import axios from 'axios';
 import { Helmet } from 'react-helmet';
 
 import { apiKey } from '../../.env';
-import FavoritesContext from '../contexts/FavoritesContext';
 import SearchForm from './SearchForm';
-import FavoriteButton from './FavoriteButton';
+import Cards from './Cards';
 
 const Search = () => {
   const [gifs, setGifs] = useState([]);
@@ -42,6 +41,8 @@ const Search = () => {
     }
   };
 
+  const buttonTitle = 'Add or Remove photo from favorites';
+
   return (
     <Fragment>
       <Helmet>
@@ -52,37 +53,7 @@ const Search = () => {
         <SearchForm onSubmit={handleSubmit} error={error} />
         {error ? <h3 className="Content__header__alert">{error}</h3> : ''}
       </div>
-      {!error && gifs ? (
-        <section className="Cards">
-          <FavoritesContext.Consumer>
-            {({ toggleFavorite, isFavorite }) => (
-              <Fragment>
-                {gifs.map(gif => {
-                  const {
-                    title,
-                    images: {
-                      fixed_height_still: { url },
-                    },
-                  } = gif;
-                  return (
-                    <div className="Cards__card" key={gif.id}>
-                      <img src={url} alt={title} title={title} className="card__img" />
-                      <FavoriteButton
-                        toggleFavorite={toggleFavorite}
-                        isFavorite={isFavorite}
-                        gif={gif}
-                        buttonTitle="Add or Remove photo from favorites"
-                      />
-                    </div>
-                  );
-                })}
-              </Fragment>
-            )}
-          </FavoritesContext.Consumer>
-        </section>
-      ) : (
-        ''
-      )}
+      <Cards gifs={gifs} buttonTitle={buttonTitle} error={error} isSearch />
     </Fragment>
   );
 };
