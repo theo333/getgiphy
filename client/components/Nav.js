@@ -11,13 +11,13 @@ const Nav = () => {
         {({ count }) => (
           <Fragment>
             <div className="nav__item">
-              <NavLink exact to="/" role="button">
+              <NavLink exact to="/" role="button" className="nav__item__link">
                 <MdSearch fontSize="25px" color="black" />
                 Search
               </NavLink>
             </div>
             <div className="nav__item">
-              <NavLink exact to="/favorites" role="button">
+              <NavLink exact to="/favorites" role="button" className="nav__item__link">
                 <MdHeartOutline fontSize="25px" color="black" />
                 Favorites
               </NavLink>

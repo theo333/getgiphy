@@ -35,7 +35,7 @@ const SearchForm = ({ onSubmit, error }) => {
             </h2>
             {!error ? (
               <div className="Form-results-text__instructions">
-                Select <MdHeart fontSize="1.5em" className="nofav-heart" />
+                Select <MdHeart className="nofav-heart" />
                 to add / remove from your favorites!
               </div>
             ) : (

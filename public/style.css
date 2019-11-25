@@ -13,8 +13,8 @@ body {
 
 a {
   text-decoration: none;
-  /* color: #0984e3; */
-  color: #545454;
+  color: #0984e3;
+  /* color: #545454; */
 }
 
 a svg {
@@ -24,7 +24,7 @@ a svg {
 h1,
 h2 {
   font-weight: 400;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.2em;
 }
 
 /************** Header **************/
@@ -88,9 +88,9 @@ h2 {
   transform: scale(1.06);
 }
 
-/* .nav__item__search::before {
-
-} */
+.nav__item__link {
+  color: #545454;
+}
 
 .nav__item__count {
   margin-left: 0.5em;
@@ -143,6 +143,17 @@ h2 {
   margin-bottom: 4em;
 }
 
+.Cards__alert {
+  color: white;
+  text-align: center;
+  line-height: 1.8em;
+  margin-top: 0;
+}
+
+.Cards__alert__nofav {
+  color: red;
+}
+
 .Cards__card {
   display: flex;
   flex: auto;
@@ -151,6 +162,12 @@ h2 {
   overflow: hidden;
   position: relative;
   transition: 0.5s all ease;
+}
+
+.Cards__favorites-remove {
+  display: block;
+  margin-bottom: 2em;
+  font-size: 1.3rem;
 }
 
 .Cards__card:hover {
@@ -274,7 +291,8 @@ svg.nofav-heart:hover {
 }
 
 .Form-results-text__search__query {
-  color: #0984e3;
+  /* color: #0984e3; */
+  color: #ffeaa7;
 }
 
 .Form-results-text__instructions {
