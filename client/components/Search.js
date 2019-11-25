@@ -1,5 +1,6 @@
 /*eslint-disable consistent-return*/
 /*eslint-disable camelcase*/
+/*eslint-disable import/no-unresolved*/
 import React, { useState, Fragment } from 'react';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
@@ -28,6 +29,7 @@ const Search = () => {
       }
       setError('Sorry no results match your search terms.  Please search again.');
     } catch (error) {
+      /*eslint-disable-next-line no-console*/
       console.log('getGifs error: ', error);
     }
   };
@@ -37,6 +39,7 @@ const Search = () => {
       const newGifs = await getGifs(query);
       setGifs(newGifs);
     } catch (error) {
+      /*eslint-disable-next-line no-console*/
       console.log('Search handleSubmit error: ', error);
     }
   };

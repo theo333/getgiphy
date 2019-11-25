@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from 'react';
-import MdHeartOutline from 'react-ionicons/lib/MdHeartOutline';
 import MdHeart from 'react-ionicons/lib/MdHeart';
 
 const SearchForm = ({ onSubmit, error }) => {
