@@ -1,4 +1,5 @@
 /*eslint-disable indent*/
+/*eslint-disable no-nested-ternary*/
 import React from 'react';
 
 import FavoritesContext from '../contexts/FavoritesContext';
