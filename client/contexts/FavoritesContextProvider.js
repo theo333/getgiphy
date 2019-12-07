@@ -14,6 +14,8 @@ const FavoritesContextProvider = props => {
 
   const addFavorite = fav => {
     if (!isFavorite(fav)) {
+      //eslint-disable-next-line no-param-reassign
+      fav.added = true;
       const newFavorites = [...favorites, fav];
       setFavorites(newFavorites);
       setToStorage('fav', newFavorites);

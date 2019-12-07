@@ -93,12 +93,28 @@ h2 {
 }
 
 .nav__item__count {
-  margin-left: 0.5em;
-  padding: 0.12em;
-  background-color: white;
-  color: red;
-  border-radius: 5px;
-  font-size: 0.7em;
+  margin-left: 1em;
+  color: white;
+  font-size: 0.75em;
+  font-weight: 600;
+  position: relative;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.count__heart {
+  position: absolute;
+  width: 2.8rem;
+  height: 2.8rem;
+  fill: red;
+}
+
+.count__number {
+  position: absolute;
+  top: 0.6rem;
 }
 
 .Siteheader__company-name_1,
@@ -131,6 +147,7 @@ h2 {
 
 .Content__header__alert {
   color: red;
+  font-weight: 400;
 }
 
 .Cards {
@@ -203,14 +220,32 @@ h2 {
 
 .fav-heart {
   fill: red;
-  filter: brightness(80%);
+  filter: brightness(85%);
 }
 
 svg.fav-heart:hover {
-  /* fill: white;
-  stroke: red;
-  stroke-width: 60; */
   filter: brightness(100%);
+}
+
+svg.fav-added {
+  animation: add-favorite 1s ease-in-out;
+}
+
+@keyframes add-favorite {
+  from {
+    filter: brightness(100%);
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.6);
+  }
+  90% {
+    filter: brightness(100%);
+  }
+  to {
+    filter: brightness(85%);
+    transform: scale(1);
+  }
 }
 
 .nofav-heart {
@@ -221,7 +256,6 @@ svg.fav-heart:hover {
 }
 
 svg.nofav-heart:hover {
-  /* fill: red; */
   filter: brightness(100%);
 }
 

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import MdSearch from 'react-ionicons/lib/MdSearch';
 import MdHeartOutline from 'react-ionicons/lib/MdHeartOutline';
+import MdHeart from 'react-ionicons/lib/MdHeart';
 import FavoritesContext from '../contexts/FavoritesContext';
 
 const Nav = () => {
@@ -22,7 +23,12 @@ const Nav = () => {
                 Favorites
               </NavLink>
             </div>
-            <span className="nav__item__count">{count}</span>
+            <div className="nav__item__count">
+              <MdHeart className="count__heart" />
+              <span className="count__number" aria-label="number of favorites">
+                {count}
+              </span>
+            </div>
           </Fragment>
         )}
       </FavoritesContext.Consumer>
