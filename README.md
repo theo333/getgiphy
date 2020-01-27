@@ -2,6 +2,9 @@
 
 ![](public/images/home-page-screenshot.png)
 
+### Live Site
+https://getgiphy.herokuapp.com/#/
+
 ### Description
 
 GetGiphy is an app which allows a user to get animated GIFs from the Giphy API and save them to their local Favorites.
@@ -33,7 +36,9 @@ Open site in browser.
 
 - [React](https://reactjs.org/)
 - [React Router](https://reacttraining.com/react-router/) - routing
-- [React Context](https://reactjs.org/docs/context.html) - state management
+- React Hooks
+  - [useState](https://reactjs.org/docs/hooks-reference.html#usestate) - local state management
+  - [useContext](https://reactjs.org/docs/context.html) - sharing "global" data with components
 - [Axios](https://www.npmjs.com/package/axios) - fetching API data
 - [React Ion Icons](https://zamarrowski.github.io/react-ionicons/) - heart icon
 - [React Helmet](https://github.com/nfl/react-helmet) - header meta
